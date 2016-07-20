@@ -16,7 +16,13 @@ var proxy = httpProxy.createProxyServer({
 });
 
 var app = express();
+
+// Public
 app.use(express.static("./dist/"));
+app.use("/asset", express.static("./src/asset/img"));
+app.use("/asset/favicons", express.static("./src/asset/favicons"));
+
+// Proxy to webpack server
 app.all('/*', function(req, res) {
     proxy.web(req, res, {
         target: 'http://localhost:8081'
