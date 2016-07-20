@@ -20,13 +20,18 @@ module.exports = {
         extensions: ['', '.js', '.jsx']
     },
     module: {
-        loaders: [
-            { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
+        loaders: [{
+                test: /.jsx?$/, // Match both .js and .jsx
+                loader: 'babel-loader',
+                exclude: /node_modules/,
+                query: {
+                    presets: ['es2015', 'react']
+                }
+            },
             { test: /\.css$/, loader: 'style-loader!css-loader' },
             { test: /\.scss$/, loaders: ['style', 'css?sourceMap', 'sass?sourceMap'] },
-            { test: /\.html$/, loader: 'raw' }, 
-            {
-                test:  /.(png|woff(2)?|eot|ttf|svg)(\?[a-z0-9=\.]+)?$/,
+            { test: /\.html$/, loader: 'raw' }, {
+                test: /.(png|woff(2)?|eot|ttf|svg)(\?[a-z0-9=\.]+)?$/,
                 loader: 'url-loader?limit=100000'
             }, {
                 test: /\.gif/,

@@ -1,8 +1,9 @@
 import React from 'react';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import { Router, Route, IndexRoute, browserHistory, Redirect } from 'react-router';
 
 import App from './component/app.js';
 import Home from './component/home.js';
+import About from './component/about/about.js';
 
 const historyOptions = {
   queryKey : false
@@ -10,9 +11,10 @@ const historyOptions = {
 
 export default (
   <Router history={browserHistory}>
-    <Route path='/' component={ App }>
-      <IndexRoute component={ Home }/>
-      <Route path='home' component={ Home } />
+    <Route component={ App }>
+      <Route path='/' component={ Home } >
+      	<IndexRoute component={ About } />
+      </Route>
     </Route>
   </Router>
 );

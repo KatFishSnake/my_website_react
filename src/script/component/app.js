@@ -1,4 +1,5 @@
 import React from 'react';
+import Router, { RouteHandler } from 'react-router';
 
 class App extends React.Component {
   
@@ -9,9 +10,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <div className="content">
-          {this.props.children}
-        </div>
+        {this.props.children}
       </div>
     );
   }
