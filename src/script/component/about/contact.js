@@ -1,6 +1,6 @@
 import React from 'react';
 
-class MobileContact extends React.Component {
+class Contact extends React.Component {
   
   constructor(props){
     super(props);
@@ -19,7 +19,7 @@ class MobileContact extends React.Component {
 
   render() {
     return (
-        <div className="contact mobile-only">
+        <div className="contact">
             <a className="email" href={this.state.email_link}>
               <i className="pw-paper-plane"></i>
               <span itemProp="email">{this.state.email}</span>
@@ -33,4 +33,4 @@ class MobileContact extends React.Component {
   }
 }
 
-export default MobileContact;
+export default Contact;

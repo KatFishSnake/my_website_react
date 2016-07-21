@@ -1,0 +1,166 @@
+@import "variables";
+
+body {
+    .with-menu {
+
+        section.about > div {
+            
+            @media #{$bp-lg} {
+                display: inline-block;
+
+                &.description {
+                    width: 60%;
+                }
+
+                &.profile {
+                    width: 40%;
+                }
+            }
+        }
+    }
+
+    .no-menu {
+
+        section.about > div {
+
+            @media #{$bp-sm} {
+                display: inline-block;
+
+                &.description {
+                    width: 60%;
+                }
+
+                &.profile {
+                    width: 40%;
+                }
+            }
+        }
+    }
+
+    section.about {
+        min-width: 12em;
+        text-align: center;
+        position: relative;
+        z-index: $padds-index;
+        max-width: 48rem;
+        width: 100%;
+        padding: 2rem 1.5rem;
+        margin: 0 auto;
+        background-color: white;
+
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+
+        -webkit-flex-flow: row wrap;
+        flex-flow: row wrap;
+        justify-content: center;
+
+        -webkit-box-shadow: 0 5px 10px #aaa;
+        box-shadow: 0 5px 10px #aaa;
+
+        > div {
+            display: block;
+            width: 100%;
+            vertical-align: top;
+        }
+
+        .description {
+            text-align: left;
+
+            h1 {
+                color: $highlight-primary;
+                margin-bottom: .5rem;
+            }
+
+            h3 {
+                color: #bfbfbf;
+            }
+
+            p {
+                font-size: .9rem;
+            }
+
+            p:nth-child(6) {
+                display: inline;
+            }
+
+            span {
+                font-size: 1.5rem;
+            }
+
+            @media #{$bp-sm} {
+                padding-left: 1rem;
+            }
+        }
+
+        .profile {
+            .picture {
+                width: 100%;
+
+                img {
+                    background-color: #d9d9d9;
+                    min-height: 6em;
+                    width: 100%;
+                    max-width: 15em;
+                    border-radius: 50%;
+                    margin: 0 auto;
+                    display: block;
+
+                    @media #{$bp-sm} {
+                        width: 70%;
+                    }
+                }
+            }
+
+            .soc-media {
+                height: 3.5rem;
+                margin-top: 1rem;
+                text-align: center;
+
+                a {
+                    font-size: 1.6rem;
+                    margin: 0 .5rem;
+
+                    &:hover {
+                        color: $highlight-primary;
+                    }
+                }
+
+                i {
+                    vertical-align: middle;
+                }
+            }
+        }
+
+        .contact {
+            a {
+                width: 13rem;
+                text-align: left;
+                display: block;
+                margin: .5rem auto;
+
+                &:hover {
+                    color: $highlight-primary;
+                }
+
+                span {
+                    font-size: .9rem;
+                    font-weight: bold;
+                }
+
+                i {
+                    margin-right: .5em;
+                    font-size: 1.2rem;
+                    vertical-align: middle;
+                }
+            }
+
+            @media #{$bp-sm} {
+                margin-top: 0;
+            }
+        }
+    }
+}

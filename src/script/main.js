@@ -2,7 +2,9 @@
 import ReactDOM from 'react-dom';
 import routes from './routes';
 
+
 // Style
+import "../style/global.scss";
 import "../style/home.scss";
 import "../asset/font/style.css";
 

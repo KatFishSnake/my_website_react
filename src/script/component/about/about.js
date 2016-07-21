@@ -2,7 +2,8 @@ import React from 'react';
 
 import Profile from "./profile";
 import Description from "./description";
-import MobileContact from "./contact";
+
+import about_style from "../../../style/about.scss";
 
 class About extends React.Component {
   constructor(props) {
@@ -51,7 +52,6 @@ class About extends React.Component {
       <section className="about">
         <Profile email={this.state}/>
         <Description />
-        <MobileContact email={this.state}/>
       </section>
     );
   }
