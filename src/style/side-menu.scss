@@ -43,8 +43,21 @@ body {
 	    	width: 100%;
 	    }
 
+	    .login-form .form-container { height: 0; }
+	    .signup-form .form-container { height: 0; }
+
+	    &.ln-active {
+    	    .login-form .form-container { height: 7rem; }
+    	    .signup-form .form-container { height: 0; }
+	    }
+
+	    &.sp-active {
+    	    .login-form .form-container { height: 0; }
+    	    .signup-form .form-container { height: 10rem; }
+	    }
+
 	    .inner-menu {
-	    	min-width: 12em;
+    	    min-width: 20em;
 	    	padding: 3em 1em 0 1em;
 
 		    img.box {
@@ -59,13 +72,46 @@ body {
     	    	color: $tertiary;
     	    }
 
-	    	button {
-	    		display: block;
-    		    width: 100%;
-    			margin-bottom: 1em;
+    	    .login-form,
+    	    .signup-form {
 
-	    		@include button();
-	    	}
+		    	> button {
+		    		display: block;
+	    		    width: 100%;
+	    			margin-bottom: 1em;
+		    	}
+
+		    	.form-container {
+	    		    margin: 0 auto;
+    				padding: 0 .5em;
+    				overflow: hidden;
+
+    				@include transition(height, 250ms);
+
+		    		form {
+	    			    padding-bottom: 2em;
+    			    	box-sizing: border-box;
+
+			    		button { 
+						    margin: 0 0 0 .5em;
+						    box-sizing: border-box;
+			    		}
+
+    			    	i { vertical-align: middle; }
+		    		}
+
+		    		.following-input {
+		    			width: calc(100% - 3em - 0.5em)
+		    		}
+
+		    		.precede-input {
+	    			    display: block;	
+					    box-sizing: border-box;
+					    width: 100%;
+					    margin-bottom: 1em;
+		    		}
+		    	}
+    	    }
 	    }
 
 	    .mobile-menu {

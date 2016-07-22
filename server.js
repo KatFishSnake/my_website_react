@@ -60,5 +60,5 @@ new WebpackDevServer(compiler, {
 
 var port = 8080;
 app.listen(port, function() {
-    console.log('Server running on port ' + port);
+    console.info('==> 🌎 Listening on port %s. Open up http://127.0.0.1:%s/ in your browser.', port, port);
 });

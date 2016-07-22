@@ -17,7 +17,6 @@ class Menu extends React.Component {
     }
 
     setLoginActive() {
-        console.log("set login active");
         this.setState({
             ln_active: true,
             sp_active: false
@@ -25,7 +24,6 @@ class Menu extends React.Component {
     }
 
     setSignupActive() {
-        console.log("set signup active");
         this.setState({
             ln_active: false,
             sp_active: true
@@ -35,8 +33,8 @@ class Menu extends React.Component {
     render() {
         let smClasses = cn({
             "side-menu": true,
-            "ln_active": this.state.ln_active,
-            "sp_active": this.state.sp_active
+            "ln-active": this.state.ln_active,
+            "sp-active": this.state.sp_active
         });
 
         return (
