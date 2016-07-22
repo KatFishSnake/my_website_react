@@ -1,7 +1,11 @@
 import React from "react";
 import cn from "classnames";
 
+import Login from "./login";
+import Signup from "./signup";
+
 import "../../../style/side-menu.scss";
+import box from "../../../asset/img/box.gif";
 
 class Menu extends React.Component {
     constructor(props) {
@@ -12,9 +16,19 @@ class Menu extends React.Component {
         };
     }
 
-    checkMobile() {
+    setLoginActive() {
+        console.log("set login active");
         this.setState({
-            mobile: !this.state.expanded
+            ln_active: true,
+            sp_active: false
+        });
+    }
+
+    setSignupActive() {
+        console.log("set signup active");
+        this.setState({
+            ln_active: false,
+            sp_active: true
         });
     }
 
@@ -32,9 +46,11 @@ class Menu extends React.Component {
                 </div>
                 <div className="menu-container">
                     <div className="inner-menu">
+                        <img className="box" src={box} alt="Box absurd" />
                         <h3> Hello, please log in or sign up.</h3>
-                        <button> Log in </button>
-                        <button> Sign Up </button>
+                        
+                        <Login setActivate={ () => this.setLoginActive() } />
+                        <Signup setActivate={ () => this.setSignupActive() } />
                     </div>
                 </div>
     		</div>

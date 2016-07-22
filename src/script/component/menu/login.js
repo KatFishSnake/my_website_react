@@ -1,0 +1,19 @@
+import React from "react";
+
+class Login extends React.Component {
+
+	constructor(props) {
+		super(props);
+	}
+
+
+    render () {
+    	return (
+    		<div className="login-form">
+    			<button onClick={this.props.setActivate}> Log in </button>
+    		</div>
+    	);
+    }
+}
+
+export default Login;
