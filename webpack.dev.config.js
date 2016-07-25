@@ -2,18 +2,21 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+// COOL one here
+// const validate = require('webpack-validator')
+
 module.exports = {
     devtool: 'eval-source-map',
     entry: {
         app: [
-            'webpack-dev-server/client?http://localhost:8081/',
+            'webpack-hot-middleware/client',
             'webpack/hot/only-dev-server',
-            './src/script/main.js'
+            './src/script/main'
         ]
     },
     output: {
         path: path.join(__dirname, 'dist'),
-        publicPath: "",
+        publicPath: "/",
         filename: 'bundle.js'
     },
     resolve: {
@@ -22,26 +25,38 @@ module.exports = {
     module: {
         loaders: [{
                 test: /.jsx?$/, // Match both .js and .jsx
-                loader: 'babel-loader',
-                exclude: /node_modules/,
-                query: {
-                    presets: ['es2015', 'react']
-                }
+                loaders: ['react-hot', 'babel'],
+                exclude: /node_modules/
             },
             { test: /\.css$/, loader: 'style-loader!css-loader' },
             { test: /\.scss$/, loaders: ['style', 'css?sourceMap', 'sass?sourceMap'] },
             { test: /\.html$/, loader: 'raw' }, {
                 test: /.(png|woff(2)?|eot|ttf|svg)(\?[a-z0-9=\.]+)?$/,
-                loader: 'url-loader?limit=100000'
+                loader: 'url-loader',
+                query: {
+                    limit: "100000",
+                }
             }, {
                 test: /\.gif/,
-                loader: "url-loader?limit=10000&mimetype=image/gif"
+                loader: "url-loader",
+                query: {
+                    limit: "10000",
+                    mimetype: "image/gif"
+                }
             }, {
                 test: /\.jpg/,
-                loader: "url-loader?limit=10000&mimetype=asset/jpg"
+                loader: "url-loader",
+                query: {
+                    limit: "10000",
+                    mimetype: "asset/jpg"
+                }
             }, {
                 test: /\.png/,
-                loader: "url-loader?limit=10000&mimetype=image/png"
+                loader: "url-loader",
+                query: {
+                    limit: "10000",
+                    mimetype: "image/png"
+                }
             }
         ]
     },

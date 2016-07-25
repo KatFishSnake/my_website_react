@@ -8,4 +8,5 @@ import "../style/global.scss";
 import "../style/home.scss";
 import "../asset/font/style.css";
 
+
 ReactDOM.render(routes, document.getElementById('root'));

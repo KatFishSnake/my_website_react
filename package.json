@@ -4,9 +4,12 @@
   "description": "The same website build with different tech",
   "main": "app.js",
   "scripts": {
-    "start": "node server.js",
-    "build": "webpack"
+    "start": "node server.js"
   },
+  "license": "UNLICENSED",
+  "private": true,
+  "homepage": "",
+  "author": "Andre",
   "dependencies": {
     "babel-cli": "^6.9.0",
     "babel-core": "^6.9.0",
@@ -14,27 +17,24 @@
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-2": "^6.5.0",
-    "classnames": "^2.2.5",
-    "css-loader": "^0.21.0",
-    "express": "^4.14.0",
-    "file-loader": "^0.8.4",
-    "html-webpack-plugin": "^1.7.0",
-    "http-proxy": "^1.14.0",
-    "lodash": "^4.13.1",
-    "node-sass": "^3.3.3",
-    "raw-loader": "^0.5.1",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
     "react-router": "^2.5.2",
+    "react-hot-loader": "^1.3.0",
     "react-swiper": "^0.1.5",
+    "express": "^4.14.0",
+    "webpack": "^1.13.1",
+    "webpack-dev-middleware": "^1.6.1",
+    "webpack-hot-middleware": "^2.12.1",
+    "html-webpack-plugin": "^1.7.0",
+    "classnames": "^2.2.5",
+    "css-loader": "^0.21.0",
+    "file-loader": "^0.8.4",
+    "lodash": "^4.13.1",
+    "node-sass": "^3.3.3",
+    "raw-loader": "^0.5.1",
     "sass-loader": "^3.0.0",
     "style-loader": "^0.13.0",
-    "url-loader": "^0.5.7",
-    "webpack": "^1.13.1",
-    "webpack-dev-server": "^1.14.1"
-  },
-  "license": "ISC",
-  "private": true,
-  "homepage": "",
-  "author": "Andre"
+    "url-loader": "^0.5.7"
+  }
 }
