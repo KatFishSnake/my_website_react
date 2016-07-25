@@ -34,7 +34,7 @@ app.use(webpackDevMiddleware(compiler, {
 // Dev hot-reloading module
 app.use(webpackHotMiddleware(compiler, {
     log: console.log
-}))
+}));
 
 let port = 8080;
 app.listen(port, function() {

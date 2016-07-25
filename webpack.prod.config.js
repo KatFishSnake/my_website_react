@@ -1,27 +1,51 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
-const validate = require('webpack-validator');
+const StatsPlugin = require('stats-webpack-plugin');
 const ModernizrWebpackPlugin = require('modernizr-webpack-plugin');
 
-module.exports = validate({
-    devtool: 'eval-source-map',
+module.exports = {
     entry: {
         app: [
-            'webpack-hot-middleware/client',
-            'webpack/hot/only-dev-server',
-            './src/script/main'
+            path.join(__dirname, 'src/script/main')
         ]
     },
     output: {
-        path: "/",
+        path: path.join(__dirname, '/dist/'),
         publicPath: "/",
-        filename: 'bundle.js'
+        filename: '[name]-[hash].min.js'
     },
     resolve: {
         extensions: ['', '.js', '.jsx', '.scss']
     },
+    plugins: [
+        new webpack.optimize.OccurrenceOrderPlugin(),
+        new HtmlWebpackPlugin({
+            title: 'Andre Front-end Developer',
+            hash: true,
+            filename: 'index.html',
+            template: __dirname + '/src/index.html',
+            files: {
+                js: ["/bundle.js"]
+            }
+        }),
+        new webpack.optimize.DedupePlugin(),
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false,
+            },
+            mangle: true,
+            screw_ie8: true,
+        }),
+        new StatsPlugin('webpack.stats.json', {
+            source: false,
+            modules: false
+        }),
+        new ModernizrWebpackPlugin()
+    ],
     module: {
         loaders: [{
                 test: /.jsx?$/, // Match both .js and .jsx
@@ -59,19 +83,5 @@ module.exports = validate({
                 }
             }
         ]
-    },
-    plugins: [
-        new HtmlWebpackPlugin({
-            title: 'Andre Front-end Developer',
-            hash: true,
-            filename: 'index.html',
-            template: __dirname + '/src/index.html',
-            files: {
-                js: ["/bundle.js"]
-            }
-        }),
-        new webpack.HotModuleReplacementPlugin(),
-        new ModernizrWebpackPlugin(),
-        new webpack.NoErrorsPlugin()
-    ]
-});
+    }
+};
