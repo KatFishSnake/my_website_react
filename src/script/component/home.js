@@ -66,7 +66,7 @@ class Home extends React.Component {
 
     return (
       <div className={smClasses}>
-        <Menu toggleMenu={() => this.toggleMenu()} />
+        <Menu {...this.props} toggleMenu={() => this.toggleMenu()} />
         <div className="wrapper">
           {this.props.children}
           <Footer />

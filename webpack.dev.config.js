@@ -10,7 +10,6 @@ module.exports = validate({
     entry: {
         app: [
             'webpack-hot-middleware/client',
-            'webpack/hot/only-dev-server',
             './src/script/main'
         ]
     },

@@ -1,4 +1,7 @@
 import React from "react";
+import { withRouter } from 'react-router'
+
+import auth from "../../shared/auth";
 
 class Login extends React.Component {
 
@@ -10,10 +13,10 @@ class Login extends React.Component {
      * Sanitize text string
      */
     sanitizeText(str) {
-        return str.toString().replace(/[^\w\s\-\d]/gi, '');
+        return str.toString().replace(/[^\w\s\-\d]/gi, '').trim();
     }
 
-    onSubmit (e) {
+    onSubmit (e, context) {
         e.preventDefault()
 
         let data = {
@@ -21,8 +24,16 @@ class Login extends React.Component {
             password: this.refs.loginPass.value
         };
 
-        console.log(data);
         alert(data.username + " " + data.password)
+
+        const self = this;
+        auth.login(data, (res) => {
+            if (res.status) {
+                self.props.router.push("apps");
+
+                self.props.login({name: data.username});
+            }
+        });
     }
 
     render () {
@@ -44,4 +55,4 @@ class Login extends React.Component {
     }
 }
 
-export default Login;
+export default withRouter(Login);

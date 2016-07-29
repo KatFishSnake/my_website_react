@@ -1,4 +1,7 @@
 import React from "react";
+import { withRouter } from 'react-router'
+
+import auth from "../../shared/auth";
 
 class Signup extends React.Component {
 
@@ -10,7 +13,7 @@ class Signup extends React.Component {
      * Sanitize text string
      */
     sanitizeText(str) {
-        return str.toString().replace(/[^\w\s\-\d]/gi, '');
+        return str.toString().replace(/[^\w\s\-\d]/gi, '').trim();
     }
 
     onSubmit (e) {
@@ -22,8 +25,18 @@ class Signup extends React.Component {
             secret: this.refs.signupKey.value
         };
 
-        console.log(data);
-        alert(data.username + " " + data.password + " " + data.secret)
+        const self = this;
+
+        auth.signup(data, (res) => {
+            if (res.status) {
+
+                auth.login(res.user, function (res) {
+                    self.props.router.push("apps");
+
+                    self.props.login({name: data.username});
+                });
+            }
+        });
     }
 
 	render () {
@@ -46,4 +59,4 @@ class Signup extends React.Component {
 	}
 }
 
-export default Signup;
+export default withRouter(Signup);
